@@ -30,4 +30,9 @@ yarn-error.log*
 .cursor/
 
 # Electron specific
-out/ 
+out/
+
+# Documentation
+docs/*
+!docs/README.md
+  

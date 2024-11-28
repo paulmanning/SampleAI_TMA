@@ -11,4 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial project setup
 - Basic Electron configuration
 - Test environment setup
-- CI/CD pipeline configuration 
+- CI/CD pipeline configuration
+- Basic Electron application structure
+- Main process configuration
+- Renderer process setup 
