@@ -4,36 +4,11 @@
  * @module test/setup
  */
 
-/**
- * @typedef {Object} MockState
- * @property {Function|null} windowAllClosedCallback - Callback for window-all-closed event
- * @property {Function|null} activateCallback - Callback for activate event
- * @property {Promise|null} readyPromise - Promise for app ready state
- * @property {Function|null} readyResolver - Resolver function for readyPromise
- */
-
-/**
- * Shared mock state for test synchronization
- * @type {MockState}
- */
 const mockState = {
   windowAllClosedCallback: null,
   activateCallback: null,
   readyPromise: null,
   readyResolver: null
-};
-
-/**
- * Mock implementation of BrowserWindow
- * @class MockBrowserWindow
- */
-const mockBrowserWindow = {
-  loadFile: jest.fn(),
-  webContents: {
-    openDevTools: jest.fn(),
-  },
-  on: jest.fn(),
-  show: jest.fn(),
 };
 
 // Export mock state for test access
@@ -43,20 +18,38 @@ module.exports = mockState;
  * Mock implementation of Electron modules
  * @namespace
  */
-jest.mock('electron', () => ({
-  app: {
-    whenReady: jest.fn().mockReturnValue(mockState.readyPromise),
+jest.mock('electron', () => {
+  const mockBrowserWindow = {
+    loadFile: jest.fn(),
+    webContents: {
+      openDevTools: jest.fn(),
+    },
     on: jest.fn(),
-    quit: jest.fn()
-  },
-  BrowserWindow: jest.fn(() => mockBrowserWindow),
-  ipcMain: {
-    on: jest.fn(),
-    handle: jest.fn(),
-  },
-  ipcRenderer: {
-    on: jest.fn(),
-    send: jest.fn(),
-    invoke: jest.fn(),
-  }
-})); 
+    show: jest.fn(),
+  };
+
+  return {
+    app: {
+      whenReady: jest.fn().mockReturnValue(mockState.readyPromise),
+      on: jest.fn((event, callback) => {
+        if (event === 'window-all-closed') {
+          mockState.windowAllClosedCallback = callback;
+        }
+        if (event === 'activate') {
+          mockState.activateCallback = callback;
+        }
+      }),
+      quit: jest.fn()
+    },
+    BrowserWindow: jest.fn(() => mockBrowserWindow),
+    ipcMain: {
+      on: jest.fn(),
+      handle: jest.fn(),
+    },
+    ipcRenderer: {
+      on: jest.fn(),
+      send: jest.fn(),
+      invoke: jest.fn(),
+    }
+  };
+}); 
