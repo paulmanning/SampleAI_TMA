@@ -1,64 +1,156 @@
 /**
- * @fileoverview Main process file for the Electron TDD Project
- * This file handles the core application lifecycle, window management,
- * and IPC communication setup.
+ * @fileoverview Main process file for the Naval Tactical Simulator
+ * Handles application lifecycle, window management, and menu setup.
  * @module main
  */
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
 /**
- * Creates a new browser window for the application.
- * This function initializes the main application window with specific
- * dimensions and web preferences.
- * 
+ * Creates the application menu with simulation controls
+ * @function createAppMenu
+ * @returns {Menu} The configured application menu
+ */
+function createAppMenu() {
+  const template = [
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'New Simulation',
+          accelerator: 'CmdOrCtrl+N',
+          click: () => {
+            createNewSimulation();
+          }
+        },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    },
+    {
+      label: 'Simulation',
+      submenu: [
+        {
+          label: 'Start',
+          enabled: false, // Enable when simulation is loaded
+          click: () => {
+            startSimulation();
+          }
+        },
+        {
+          label: 'Pause',
+          enabled: false,
+          click: () => {
+            pauseSimulation();
+          }
+        },
+        {
+          label: 'Reset',
+          enabled: false,
+          click: () => {
+            resetSimulation();
+          }
+        }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+  return menu;
+}
+
+/**
+ * Creates a new simulation window
+ * @function createNewSimulation
+ */
+function createNewSimulation() {
+  const win = createWindow();
+  win.webContents.send('new-simulation');
+}
+
+/**
+ * Starts the current simulation
+ * @function startSimulation
+ */
+function startSimulation() {
+  const win = BrowserWindow.getFocusedWindow();
+  if (win) {
+    win.webContents.send('start-simulation');
+  }
+}
+
+/**
+ * Pauses the current simulation
+ * @function pauseSimulation
+ */
+function pauseSimulation() {
+  const win = BrowserWindow.getFocusedWindow();
+  if (win) {
+    win.webContents.send('pause-simulation');
+  }
+}
+
+/**
+ * Resets the current simulation
+ * @function resetSimulation
+ */
+function resetSimulation() {
+  const win = BrowserWindow.getFocusedWindow();
+  if (win) {
+    win.webContents.send('reset-simulation');
+  }
+}
+
+
+/**
+ * Creates a new browser window
  * @function createWindow
- * @returns {BrowserWindow} A new instance of Electron's BrowserWindow
- * @example
- * const mainWindow = createWindow();
+ * @returns {BrowserWindow} The newly created window
  */
 function createWindow() {
-  // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     webPreferences: {
-      /**
-       * Enable Node.js integration in the renderer process
-       * @type {boolean}
-       */
       nodeIntegration: true,
-      /**
-       * Disable context isolation for this example
-       * @type {boolean}
-       */
       contextIsolation: false
     }
   });
 
-  // Load the index.html file
   win.loadFile(path.join(__dirname, 'index.html'));
+
+  // Add window close handler
+  win.on('close', () => {
+    app.quit();
+  });
+
   return win;
 }
 
 /**
- * Initializes the application and sets up event handlers.
- * This function manages the application lifecycle including:
- * - Window creation
- * - Application activation handling
- * - Window closure handling
- * 
+ * Initializes the application
  * @function initializeApp
- * @returns {void}
  */
 function initializeApp() {
-  // When Electron has finished initialization
   app.whenReady().then(() => {
+    createAppMenu();
     createWindow();
 
-    // On macOS it's common to re-create a window when
-    // clicking the dock icon if there aren't any other windows open
     app.on('activate', () => {
       if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
@@ -66,17 +158,19 @@ function initializeApp() {
     });
   });
 
-  // Handle window-all-closed event
+  // Remove the platform-specific check and always quit
   app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-      app.quit();
-    }
+    app.quit();
   });
 }
 
-// Initialize the application
 initializeApp();
 
 module.exports = {
-  createWindow
+  createWindow,
+  createAppMenu,
+  createNewSimulation,
+  startSimulation,
+  pauseSimulation,
+  resetSimulation
 }; 

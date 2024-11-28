@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial Electron application setup
+- Initial Naval Tactical Simulator setup
+- Application menu system
+- Basic window management
+- Simulation event handling
 - Test-driven development infrastructure
 - Jest testing configuration
 - JSDoc documentation system
@@ -17,7 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Code coverage reporting
 
 ### Changed
-- N/A
+- Updated application to quit on window close
+- Modified window dimensions for tactical display
+- Enhanced documentation for naval simulation context
 
 ### Deprecated
 - N/A
@@ -26,7 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - N/A
 
 ### Fixed
-- N/A
+- Window closing behavior
+- Test coverage configuration
 
 ### Security
 - N/A

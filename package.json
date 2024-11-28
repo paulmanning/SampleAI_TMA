@@ -1,11 +1,11 @@
 {
-  "name": "electron-tdd-project",
+  "name": "naval-tactical-simulator",
   "version": "1.0.0",
-  "description": "Electron application built with TDD principles",
+  "description": "Naval Tactical Simulator with Target Motion Analysis capabilities",
   "main": "./src/main.js",
   "scripts": {
     "start": "electron-forge start",
-    "dev": "NODE_ENV=development electron-forge start",
+    "dev": "nodemon --watch src --ext js,html,css --exec \"electron-forge start\"",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint .",
