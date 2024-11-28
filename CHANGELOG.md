@@ -8,10 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial project setup
-- Basic Electron configuration
-- Test environment setup
-- CI/CD pipeline configuration
-- Basic Electron application structure
-- Main process configuration
-- Renderer process setup 
+- Initial Electron application setup
+- Test-driven development infrastructure
+- Jest testing configuration
+- JSDoc documentation system
+- GitHub Actions CI workflow
+- Automated documentation deployment
+- Code coverage reporting
+
+### Changed
+- N/A
+
+### Deprecated
+- N/A
+
+### Removed
+- N/A
+
+### Fixed
+- N/A
+
+### Security
+- N/A

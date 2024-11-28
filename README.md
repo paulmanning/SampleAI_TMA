@@ -1,5 +1,20 @@
 # Electron TDD Project
 
+[![CI](https://github.com/yourusername/electron-tdd-project/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/electron-tdd-project/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/yourusername/electron-tdd-project/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/electron-tdd-project)
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://yourusername.github.io/electron-tdd-project/)
+
+An Electron application built with Test-Driven Development principles.
+
+## Features
+
+- Comprehensive test coverage
+- Automated documentation generation
+- Continuous Integration
+- Code quality checks
+
+## Development
+
 ## Overview
 This is a Test-Driven Development (TDD) based Electron application, built using modern development practices and tools.
 
