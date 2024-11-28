@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/paulmanning/SampleAI_TMA/actions/workflows/ci.yml/badge.svg)](https://github.com/paulmanning/SampleAI_TMA/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/paulmanning/SampleAI_TMA/branch/main/graph/badge.svg)](https://codecov.io/gh/paulmanning/SampleAI_TMA)
-[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://paulmanning.github.io/SampleAI_TMA/)
+[![Documentation](https://img.shields.io/badge/docs-gh--pages-blue.svg)](https://paulmanning.github.io/SampleAI_TMA/)
 
 An Electron application built with Test-Driven Development principles.
 
