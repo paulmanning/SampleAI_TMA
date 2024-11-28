@@ -13,7 +13,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "docs": "jsdoc -c jsdoc.config.js",
-    "docs:dev": "nodemon --watch src -e js --exec 'npm run docs'"
+    "docs:dev": "nodemon --watch src -e js --exec 'npm run docs'",
+    "dev:tdd": "concurrently \"npm run dev\" \"npm run test:watch\" --kill-others --names \"APP,TEST\" --prefix-colors \"bgBlue.bold,bgGreen.bold\"",
+    "dev:full": "concurrently \"npm run dev\" \"npm run test:watch\" \"npm run docs:dev\" --kill-others --names \"APP,TEST,DOCS\" --prefix-colors \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\""
   },
   "keywords": [
     "electron",
@@ -63,7 +65,8 @@
     "jest": "^29.7.0",
     "jsdoc": "^4.0.4",
     "nodemon": "^3.1.7",
-    "prettier": "^2.0.0"
+    "prettier": "^2.0.0",
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
