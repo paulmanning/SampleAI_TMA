@@ -9,13 +9,14 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint .",
+    "lint:watch": "nodemon --watch src --ext js --exec \"eslint src\"",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "docs": "jsdoc -c jsdoc.config.js",
     "docs:dev": "nodemon --watch src -e js --exec 'npm run docs'",
     "dev:tdd": "concurrently \"npm run dev\" \"npm run test:watch\" --kill-others --names \"APP,TEST\" --prefix-colors \"bgBlue.bold,bgGreen.bold\"",
-    "dev:full": "concurrently \"npm run dev\" \"npm run test:watch\" \"npm run docs:dev\" --kill-others --names \"APP,TEST,DOCS\" --prefix-colors \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\""
+    "dev:full": "concurrently \"npm run dev\" \"npm run test:watch\" \"npm run docs:dev\" \"npm run lint:watch\" --kill-others --names \"APP,TEST,DOCS,LINT\" --prefix-colors \"bgBlue.bold,bgGreen.bold,bgMagenta.bold,bgYellow.bold\""
   },
   "keywords": [
     "electron",

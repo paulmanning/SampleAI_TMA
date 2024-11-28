@@ -14,7 +14,9 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }]
+    'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+    'jest/no-disabled-tests': 'off',
+    'jest/expect-expect': 'off'
   },
   ignorePatterns: [
     'docs/**/*',
