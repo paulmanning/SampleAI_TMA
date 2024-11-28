@@ -1,8 +1,8 @@
 # Electron TDD Project
 
-[![CI](https://github.com/yourusername/electron-tdd-project/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/electron-tdd-project/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/yourusername/electron-tdd-project/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/electron-tdd-project)
-[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://yourusername.github.io/electron-tdd-project/)
+[![CI](https://github.com/paulmanning/SampleAI_TMA/actions/workflows/ci.yml/badge.svg)](https://github.com/paulmanning/SampleAI_TMA/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/paulmanning/SampleAI_TMA/branch/main/graph/badge.svg)](https://codecov.io/gh/paulmanning/SampleAI_TMA)
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://paulmanning.github.io/SampleAI_TMA/)
 
 An Electron application built with Test-Driven Development principles.
 
@@ -26,8 +26,8 @@ This is a Test-Driven Development (TDD) based Electron application, built using 
 ## Development Setup
 1. Clone the repository:
    ```bash
-   git clone [repository-url]
-   cd electron-tdd-project
+   git clone https://github.com/paulmanning/SampleAI_TMA.git
+   cd SampleAI_TMA
    ```
 
 2. Install dependencies:

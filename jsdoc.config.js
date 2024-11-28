@@ -41,7 +41,7 @@ module.exports = {
             navigation: [
                 {
                     label: 'Github',
-                    href: 'https://github.com/yourusername/electron-tdd-project'
+                    href: 'https://github.com/paulmanning/SampleAI_TMA'
                 }
             ],
             footer: 'Documentation generated with JSDoc',
