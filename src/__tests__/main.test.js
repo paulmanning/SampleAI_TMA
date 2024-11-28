@@ -6,7 +6,6 @@
 
 const mockState = require('../../test/setup');
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
 
 /**
  * Main Process Test Suite
